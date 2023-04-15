@@ -1,4 +1,4 @@
-import { ButtonStylesNames, ButtonStylesParams, DefaultProps, Flex } from '@mantine/core';
+import { ButtonStylesNames, ButtonStylesParams, DefaultProps, Flex, Sx } from '@mantine/core';
 import { Variants } from '@mantine/styles'
 import useStyles from './SideRibbon.styles';
 import { CSSObject } from '@emotion/react';
@@ -11,7 +11,7 @@ export interface SideRibbonProps extends DefaultProps {
 
 export function SideRibbon({ children, position }: SideRibbonProps) {
     const { classes } = useStyles();
-    const positionStyle: CSSObject = (position == "bottom-left") ? {
+    const positionStyle: Sx = (position == "bottom-left") ? {
         bottom: 0,
         left: 0
     } : {

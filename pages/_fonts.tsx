@@ -1,6 +1,6 @@
 import { Global } from '@mantine/core';
 
-export function CustomFonts() {
+export default function CustomFonts() {
     return (
         <Global
             styles={[

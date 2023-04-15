@@ -4,10 +4,10 @@ import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
-import { CustomFonts } from './_fonts';
+import CustomFonts  from './_fonts';
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
-import { Material3Theme } from './_theme';
+import Material3Theme from './_theme';
 
 config.autoAddCss = false
 

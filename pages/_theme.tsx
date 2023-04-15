@@ -1,6 +1,6 @@
 import { Global } from '@mantine/core';
 
-export function Material3Theme() {
+export default function Material3Theme() {
     return (
         <Global
             styles={(theme) => {

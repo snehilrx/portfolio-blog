@@ -27,12 +27,13 @@ export function SideRibbon({ children, position }: SideRibbonProps) {
                 justify="flex-start"
                 align="flex-start"
                 direction="column"
-                wrap="wrap">
+                wrap="wrap"
+                color='brand'>
                 {(position == "bottom-left") ? <>
                     {children}
-                    <span className={classes.ribbon} />
+                    <span color='brand' className={classes.ribbon}/>
                 </> : <>
-                    <span className={classes.ribbon}/>
+                    <span color='brand' className={classes.ribbon}/>
                     {children}
                 </>}
             </Flex>

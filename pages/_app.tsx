@@ -7,6 +7,7 @@ import { Notifications } from '@mantine/notifications';
 import { CustomFonts } from './_fonts';
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import { Material3Theme } from './_theme';
 
 config.autoAddCss = false
 
@@ -32,24 +33,34 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         <MantineProvider theme={{
           colorScheme,
           colors: {
-            dark: ["#417878","#305E5E","#234A4A","#1A3A3A","#132828","#0E1B1B","#0A1313","#070D0D","#050909","#040606"],
-            green: ["#91AFA2","#7BA795","#66A28A","#539D7F","#439775","#448068","#436E5C","#405F52","#3C534A",],
-          },
-
+            brand: [
+              "#D7EFDE",
+              "#B3E0C0",
+              "#8FD1A2",
+              "#6BC283",
+              "#062315",
+              "#49B265",
+              "#159947",
+              "#1F5F5B",
+              "#06373A",
+              "#052c2e"
+          ]},
+          primaryColor : 'brand',
           shadows: {
             md: '1px 1px 3px rgba(0, 0, 0, .25)',
             xl: '5px 5px 3px rgba(0, 0, 0, .25)',
           },
 
-          fontFamily: 'Google, mono, sans-serif',
+          fontFamily: 'Product, mono, sans-serif',
           headings: {
-            fontFamily: 'Google, sans-serif',
+            fontFamily: 'Product, sans-serif',
             sizes: {
               h1: { fontSize: '2rem' },
             },
-          },
+          }
         }} withGlobalStyles withNormalizeCSS>
           <CustomFonts/>
+          <Material3Theme/>
           <Component {...pageProps} />
           <Notifications />
         </MantineProvider>

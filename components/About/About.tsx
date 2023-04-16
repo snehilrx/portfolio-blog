@@ -25,11 +25,13 @@ export function About() {
             <Flex
                 className={classes.container}
                 gap={{ base: 'sm', sm: 'lg' }}>
-                <Image fit='fill' sx={{ maxWidth: 480 }}  src='/images/laptop.svg' />
+                <Image fit='fill' sx={{ maxWidth: 480 }} imageProps={{height: 822, width: 789 }} src='/images/laptop.svg' alt='about image, laptop and electronic devices, cartoon'/>
                 <Text size="lg" sx={{ maxWidth: 480 }} mt="xl">{about.discription}</Text>
             </Flex>
             <Flex
-                p="xl"
+                p={{sm: '0', md: "xl"}}
+                justify={{base: "center", md: "flex-start"}}
+                align={{base: "center", md: "start"}}
                 direction="column"
                 gap={{ base: 'sm', sm: 'lg' }}>
                 <Text size="lg" mt="xl" mb="sm">{about.listHeader}</Text>

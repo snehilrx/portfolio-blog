@@ -18,8 +18,10 @@ export default createStyles((theme) => ({
   }, 
   list: {
     flexDirection: 'column',
+    width: '100%',
     [theme.fn.largerThan('xs')] : {
       flexDirection: 'row',
+      width: 'unset'
     }
   },
 }));

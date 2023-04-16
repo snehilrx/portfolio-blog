@@ -1,4 +1,4 @@
-import { Flex, Container, MediaQuery, Header, Anchor, Divider, Title, AppShell, Burger, Button } from '@mantine/core';
+import { Flex, Container, MediaQuery, Header, Anchor, Divider, Title, AppShell, Burger, Button, Group } from '@mantine/core';
 import { SideRibbon } from '../components/SideRibbon/SideRibbon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -70,7 +70,7 @@ const Side = () => {
         </Flex>
       </SideRibbon>
       <SideRibbon position="top-right">
-        <Anchor color='brand' className={classes.email}>{info.email}</Anchor>
+        <Anchor color='brand' className={classes.email} href={`mailto:${info.email}}`}>{info.email}</Anchor>
       </SideRibbon>
     </Container>
   </MediaQuery>
@@ -107,15 +107,25 @@ export default function HomePage() {
           <div>
             <MaterialNavbar scrollHooks={scrollHooks} />
             <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
-              <Header sx={!opened ? {background: 'transparent'} : {}} withBorder={false} height={{ base: 50, md: 70 }} p="md">
+              <Header sx={!opened ? { background: 'transparent' } : {}} withBorder={false} height={{ base: 50, md: 70 }}>
                 <div style={{ justifyContent: 'end', display: 'flex', alignItems: 'center', height: '100%' }}>
-                  <Burger
-                    opened={opened}
-                    sx={!opened ? (theme) =>({background: theme.colors[theme.primaryColor][theme.colorScheme == 'light' ? 1 : 7]}) : {}}
-                    onClick={() => setOpened((o) => !o)}
-                    size="sm"
-                    mr="xl"
-                  />
+                  <Group
+                    pl="xl"
+                    pr="xl"
+                    h="100%"
+                    sx={!opened ? (theme) => ({
+                      background: theme.colors[theme.primaryColor][theme.colorScheme == 'light' ? 1 : 7],
+                      borderBottomLeftRadius: theme.radius.xl,
+                      transition: '1s'
+                    }) : (theme) => ({
+                      transition: '1s'
+                    })}>
+                    <Burger
+                      opened={opened}
+                      onClick={() => setOpened((o) => !o)}
+                      size="sm"
+                    />
+                  </Group>
                 </div>
               </Header>
             </MediaQuery>
@@ -130,7 +140,7 @@ export default function HomePage() {
           {Data.navItems.map((item) => {
             const ref = scrollHooks.get(item.id)?.ref
             if (ref) {
-              const entry = useIntersectionObserver(ref, { threshold: 0.5 })
+              const entry = useIntersectionObserver(ref, {  threshold: 0.2 })
               if (!!entry?.isIntersecting == true) {
                 setDefaultItem(item.id)
                 history.replaceState({}, "", `#${item.link}`)

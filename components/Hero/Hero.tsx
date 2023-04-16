@@ -25,7 +25,17 @@ export function Hero() {
               {hero.discription}
             </Text>
           </Container>
-          <Image className={classes.image} mx="auto" fit="contain" src='/images/avatar.svg' />
+          <Image
+           className={classes.image}
+           mx="auto" 
+           fit="contain" 
+           src='/images/avatar.svg' 
+           imageProps={{
+            height: 627,
+            width: 789
+           }}
+           alt='hero image, person writing programs on laptop, cartoon'
+          />
         </Flex>}
     </Transition>
 

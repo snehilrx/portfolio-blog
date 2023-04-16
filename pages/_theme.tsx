@@ -35,6 +35,7 @@ export default function Material3Theme() {
                         borderRadius: theme.radius.lg,
                     },
                     '.mantine-SegmentedControl-label' : {
+                        color: theme.colorScheme == "light" ?  theme.black : theme.white + "!important",  
                         [theme.fn.largerThan('md')] : {
                             padding: theme.spacing.lg
                         },

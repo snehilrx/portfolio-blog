@@ -11,7 +11,6 @@ import { faCube, faDatabase, faDiceOne, faHSquare, faPlay } from '@fortawesome/f
 import Rxjava from '../images/rxjava'
 import Typescript from '../images/typescript'
 import { AppData, ListData } from './Data.types'
-import Link from 'next/link'
 
 const list: ListData[] = [
     {
@@ -92,7 +91,7 @@ export const Data: AppData = {
         {
             id: '00',
             text: 'hero',
-            link: 'hero',
+            link: '',
             component: Hero,
             showInNav: false,
             showHeader: false,

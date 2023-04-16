@@ -52,7 +52,7 @@ export interface NavItems {
     id: string,
     text: String,
     alias: String | undefined,
-    link: string,
+    link: string | undefined,
     component: Function,
     showInNav: boolean,
     showHeader: boolean

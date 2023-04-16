@@ -27,6 +27,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         <title>Snehil</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon.svg" />
+        <meta name="description" content="Brittany Chiang is a software engineer who specializes in building (and occasionally designing) exceptional digital experiences." data-react-helmet="true"></meta>
       </Head>
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
@@ -69,10 +70,11 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   );
 }
 
-App.getInitialProps = async (appContext: AppContext) => {
+App.getStaticProps = async (appContext: AppContext) => {
   const appProps = await NextApp.getInitialProps(appContext);
   return {
     ...appProps,
     colorScheme: getCookie('mantine-color-scheme', appContext.ctx) || 'dark',
   };
 };
+

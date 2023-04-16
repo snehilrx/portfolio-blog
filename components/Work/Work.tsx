@@ -6,7 +6,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 
 export function Work() {
-    return (<Container w='100%'>
+    return (<Container w='100%' p={0}>
         <ProjectHighlight />
     </Container>)
 }
@@ -27,12 +27,29 @@ function ProjectHighlight() {
                     mt="xl"
                     key={item.title}>
 
-                    <Image
-                        height={240}
-                        width={240} mx="auto" radius="xl"
-                        src={item.cover}
-                        fit='cover' />
-                    <Container fluid className={classes.container} >
+                    {
+                        function ImageOrVideo() {
+                            if(item.cover.endsWith("mp4")) {
+                                return <Button<'video'>
+                                    component={'video'}
+                                    h={240}
+                                    w={240} mx="auto" radius="xl"
+                                    src={item.cover}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    className={classes.video}/>
+                            } else {
+                                return <Image
+                                height={240}
+                                width={240} mx="auto" radius="xl"
+                                src={item.cover}
+                                alt={`work preview, ${item.title}, ${item.tags}`}
+                                fit='cover' />
+                            }
+                        }()
+                    }
+                    <Container className={classes.container} >
                         <Text size="xs" pt={{base: 'xl', lg: '0'}} sx={{fontFamily: 'fira'}}>Featured Project</Text>
                         <Title weight={900}>{item.title}</Title>
                         <Text pb='xl' pt='xl'>{item.content}</Text>

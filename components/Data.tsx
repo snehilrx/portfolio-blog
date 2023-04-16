@@ -204,7 +204,7 @@ export const Data: AppData = {
                     </p>
                     <p>The main idea behind this project was to show a gradient backdrop to collapsing appbar which responds to the scroll change. The backdrop provides add an immersive experience to the app.
                     </p></>,
-                cover: "https://user-images.githubusercontent.com/7668602/210174320-3fc571f5-717b-4bed-af3e-6b345e642e90.gif",
+                cover: "https://i.imgur.com/pKrybg0.mp4",
                 link: "https://github.com/snehilrx/ShineBar/",
                 demo: "https://github.com/snehilrx/ShineBar/releases/tag/1.0.0"
             },

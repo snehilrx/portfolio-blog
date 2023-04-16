@@ -16,6 +16,7 @@ export default createStyles((theme) => ({
         flexDirection: 'column',
     },
     container: {
+        padding: '0',
         [theme.fn.largerThan('md')] : {
             maxWidth: 480
         }
@@ -25,5 +26,13 @@ export default createStyles((theme) => ({
         [theme.fn.largerThan('md')] : {
             textAlign: 'right',
         }
+    },
+    video : {
+        objectFit: 'cover',
+        padding: 'unset',
+        background: 'unset',
+        borderWidth: 'unset',
+        objectPosition: 'top'
     }
+    
 }))

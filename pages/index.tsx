@@ -81,12 +81,13 @@ export default function HomePage() {
   const { classes } = styles()
   const [opened, setOpened] = useState(false);
   const scrollHooks: Map<string, Scroll> = new Map<string, Scroll>(Data.navItems
-    .filter((item) => item.showInNav)
     .map((item) => {
       const { targetRef } = useScrollIntoView<HTMLDivElement>();
       const scrollFunction = () => {
         setOpened(false)
-        window.location.hash = item.link
+        if(item.link) {
+          window.location.hash = item.link
+        }
       }
       const data: Scroll = { scrollFunction, ref: targetRef }
       return [item.id, data]
@@ -143,7 +144,7 @@ export default function HomePage() {
               const entry = useIntersectionObserver(ref, {  threshold: 0.2 })
               if (!!entry?.isIntersecting == true) {
                 setDefaultItem(item.id)
-                history.replaceState({}, "", `#${item.link}`)
+                history.replaceState({}, "", item.link ? `#${item.link}` : "/")
               }
             }
             return (

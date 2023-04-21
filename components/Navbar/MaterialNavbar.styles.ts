@@ -22,10 +22,10 @@ export default createStyles((theme) => ({
     flexFlow: 'row',
     height: 'fit-content',
     display: 'flex',
-    visibility: 'hidden',
     justifyContent: 'center',
     padding: 0,
     margin: 0,
+    overflow: 'hidden'
   },
   scrollX: {
     overflowX: 'auto',
@@ -34,6 +34,7 @@ export default createStyles((theme) => ({
   },
   show : {
     ...animateAll,
+    overflow: 'hidden',
     marginTop: '-15rem'
   },
   hide : {

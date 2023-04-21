@@ -5,10 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { createStyles } from '@mantine/core';
 import { MaterialNavbar, MaterialNavbarList, Scroll } from '../components/Navbar/MaterialNavbar';
 import { Data, setDefaultItem } from '../components/Data'
-import { useScrollIntoView } from '@mantine/hooks';
 import { useState } from 'react';
-import useIntersectionObserver from '../hooks/useIntersectionObserver';
 import { Footer } from '../components/Footer/Footer';
+import { useInView } from 'react-intersection-observer';
 
 const styles = createStyles((theme) => ({
   email: {
@@ -32,6 +31,7 @@ const styles = createStyles((theme) => ({
   container: {
     flex: '1 1 auto',
     alignItems: 'center',
+    overflow: 'hidden',
     [theme.fn.largerThan('sm')]: {
       marginLeft: `calc(${theme.spacing.xl} * 2)`,
       marginRight: `calc(${theme.spacing.xl} * 2)`
@@ -76,23 +76,28 @@ const Side = () => {
   </MediaQuery>
 }
 
+const links = Data.navItems.map<[string | undefined, string]>((item) => [item.link, item.id])
 
 export default function HomePage() {
   const { classes } = styles()
   const [opened, setOpened] = useState(false);
-  const scrollHooks: Map<string, Scroll> = new Map<string, Scroll>(Data.navItems
-    .map((item) => {
-      const { targetRef } = useScrollIntoView<HTMLDivElement>();
-      const scrollFunction = () => {
-        setOpened(false)
-        if(item.link) {
-          window.location.hash = item.link
-        }
-      }
-      const data: Scroll = { scrollFunction, ref: targetRef }
-      return [item.id, data]
-    }))
+  const scrollHooks: Map<string, Scroll> = new Map<string, Scroll>(links.map((item) => {
+    const { ref, inView, entry } = useInView({
+      threshold: 0.2
+    });
 
+    if (inView) {
+      setDefaultItem(item[1])
+    }
+    const scrollFunction = () => {
+      setOpened(false)
+      if (item[0]) {
+        window.location.hash = item[0]
+      }
+    }
+    const data: Scroll = { scrollFunction, ref: ref }
+    return [item[1], data]
+  }))
   return (
     <>
       <Side />
@@ -118,7 +123,7 @@ export default function HomePage() {
                       background: theme.colors[theme.primaryColor][theme.colorScheme == 'light' ? 1 : 7],
                       borderBottomLeftRadius: theme.radius.xl,
                       transition: '1s'
-                    }) : (theme) => ({
+                    }) : () => ({
                       transition: '1s'
                     })}>
                     <Burger
@@ -140,13 +145,6 @@ export default function HomePage() {
         })}>
           {Data.navItems.map((item) => {
             const ref = scrollHooks.get(item.id)?.ref
-            if (ref) {
-              const entry = useIntersectionObserver(ref, {  threshold: 0.2 })
-              if (!!entry?.isIntersecting == true) {
-                setDefaultItem(item.id)
-                history.replaceState({}, "", item.link ? `#${item.link}` : "/")
-              }
-            }
             return (
               <Flex
                 id={item.link}

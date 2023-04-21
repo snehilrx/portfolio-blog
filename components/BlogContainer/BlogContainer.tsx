@@ -19,15 +19,15 @@ const BlogContainer = ({ navigation, children, backLink }: BlogProps) => {
     layout="alt"
     navbarOffsetBreakpoint="sm"
     navbar={opened == true ?
-      <Navbar width={{ sm: 300 }} top={0}>
-        <Navbar.Section grow mt='xl' mb='xl'>
+      <Navbar width={{ sm: 300 }} top={40} sx={{overflow: 'scroll'}}>
+        <Navbar.Section grow mt='xl' mb='xl' mr='sm'>
           {navigation}
         </Navbar.Section>
       </Navbar> : <></>}
     header={
       <div>
         <MediaQuery smallerThan="sm" styles={{ visibility: 'hidden' }}>
-          <Navbar width={{ sm: 300 }} >
+          <Navbar width={{ sm: 300 }}  sx={{overflow: 'scroll'}}>
             <Navbar.Section>
               <Flex mx='sm' my='xl' align='center' style={css} onClick={addRipple}>
                 <Link href={backLink}>
@@ -39,7 +39,7 @@ const BlogContainer = ({ navigation, children, backLink }: BlogProps) => {
                 <ColorSchemeToggle />
               </Flex>
             </Navbar.Section>
-            <Navbar.Section grow pt='xl'>
+            <Navbar.Section grow pt='xl' mr='sm'>
               {navigation}
             </Navbar.Section>
           </Navbar>

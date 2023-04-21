@@ -10,7 +10,7 @@ function useIntersectionObserver(
     threshold = 0,
     root = null,
     rootMargin = '0px',
-    freezeOnceVisible = false,
+    freezeOnceVisible = true,
   }: Args,
 ): IntersectionObserverEntry | undefined {
   const [entry, setEntry] = useState<IntersectionObserverEntry | undefined>(undefined)

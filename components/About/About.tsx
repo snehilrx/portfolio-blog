@@ -1,8 +1,9 @@
-import { Text, List, Flex, Image, Container } from '@mantine/core';
+import { Text, List, Flex, Image, Container, ContainerProps } from '@mantine/core';
 import useStyles from './About.styles';
 import { Data } from '../Data';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { ListData } from '../Data.types';
+import WithRipple from '../../ui/WithRipple';
 
 function FlattenList(list: ListData[]) {
     return <>
@@ -20,22 +21,24 @@ function FlattenList(list: ListData[]) {
 export function About() {
     const { classes } = useStyles();
     const { about } = Data
+    const {css, addRipple, ripples} = WithRipple()
     return (
-        <Flex direction='column' w="100%" className={classes.root}>
+        <Flex direction='column' w="100%" style={css} onClick={addRipple} className={classes.root}>
+            {ripples}
             <Flex
                 className={classes.container}
                 gap={{ base: 'sm', sm: 'lg' }}>
-                <Image fit='fill' sx={{ maxWidth: 480 }} imageProps={{height: 822, width: 789 }} src='/images/laptop.svg' alt='about image, laptop and electronic devices, cartoon'/>
+                <Image fit='fill' sx={{ maxWidth: 480 }} imageProps={{ height: 822, width: 789 }} src='/images/laptop.svg' alt='about image, laptop and electronic devices, cartoon' />
                 <Text size="lg" sx={{ maxWidth: 480 }} mt="xl">{about.discription}</Text>
             </Flex>
             <Flex
-                p={{sm: '0', md: "xl"}}
-                justify={{base: "center", md: "flex-start"}}
-                align={{base: "center", md: "start"}}
+                p={{ sm: '0', md: "xl" }}
+                justify={{ base: "center", md: "flex-start" }}
+                align={{ base: "center", md: "start" }}
                 direction="column"
                 gap={{ base: 'sm', sm: 'lg' }}>
                 <Text size="lg" mt="xl" mb="sm">{about.listHeader}</Text>
-                <Flex ml='md' 
+                <Flex ml='md'
                     gap={{ base: 'sm', sm: 'lg' }}
                     className={classes.list}>
                     {FlattenList(about.list)}

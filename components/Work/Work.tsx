@@ -4,6 +4,7 @@ import { Data } from "../Data";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { RippleButton } from "../../ui/WithRipple";
 
 export function Work() {
     return (<Container w='100%' p={0}>
@@ -62,22 +63,22 @@ function ProjectHighlight() {
                         </Chip.Group>
                         <Divider mt="lg" />
                         <Group position={index%2 == 0 ? "right" : "left"} mt="lg" mb="xl" >
-                            <Button<'a'> component={'a'} href={item.link} size="sm" variant="filled"
+                            <RippleButton<'a'> component={'a'} href={item.link} size="sm" variant="filled"
                                 rel="noopener noreferrer"
                                 aria-label="External Link"
                                 className="external"
                                 target="blank">
                                 <FontAwesomeIcon spacing={10} icon={faGithub} size="lg" />
                                 <Text pl="md">Github</Text>
-                            </Button>
-                            <Button<'a'> component={'a'} href={item.demo} size="sm" variant="filled"
+                            </RippleButton>
+                            <RippleButton<'a'> component={'a'} href={item.demo} size="sm" variant="filled"
                                 rel="noopener noreferrer"
                                 aria-label="External Link"
                                 className="external"
                                 target="blank">
                                 <FontAwesomeIcon spacing={10} icon={faLink} size="lg" />
                                 <Text pl="md">Demo</Text>
-                            </Button>
+                            </RippleButton>
                         </Group>
                     </Container>
                 </Flex>

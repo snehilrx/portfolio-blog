@@ -10,51 +10,52 @@ interface BlogProps {
   navigation: React.ReactElement,
   children: React.ReactElement,
   backLink: string
+  title: string
+  className: string
 }
 
-const BlogContainer = ({ navigation, children, backLink }: BlogProps) => {
+const BlogContainer = ({ navigation, children, backLink, title, className }: BlogProps) => {
   const { css, addRipple, ripples } = WithRipple()
   const [opened, setOpened] = useState<boolean>(false)
   return <AppShell
     layout="alt"
     navbarOffsetBreakpoint="sm"
     navbar={opened == true ?
-      <Navbar width={{ sm: 300 }} top={40} sx={{overflow: 'scroll'}}>
-        <Navbar.Section grow mt='xl' mb='xl' mr='sm'>
+      <Navbar width={{ sm: 300 }} top={40} sx={{ overflow: 'scroll' }}>
+        <Navbar.Section top={40} grow mt='xl' mb='xl' mr='sm'>
           {navigation}
         </Navbar.Section>
       </Navbar> : <></>}
     header={
       <div>
         <MediaQuery smallerThan="sm" styles={{ visibility: 'hidden' }}>
-          <Navbar width={{ sm: 300 }}  sx={{overflow: 'scroll'}}>
+          <Navbar width={{ sm: 280, md: 300, xl: 400 }} sx={{ overflow: 'scroll' }}>
             <Navbar.Section>
-              <Flex mx='sm' my='xl' align='center' style={css} onClick={addRipple}>
+              <Flex px='xl' my='xl' align='center' style={css} onClick={addRipple}>
                 <Link href={backLink}>
-                  <Text color='brand' pr='sm'>
-                    <FontAwesomeIcon icon={faArrowLeft} size='2x' spacing="10p" />
+                  <Text className={className} pr='sm'>
+                    <FontAwesomeIcon  icon={faArrowLeft} size='2x' spacing="10p" />
                   </Text>
                 </Link>
-                <Title w="calc(100vw - 200px)" maw={800}>Blog</Title>
+                    <Title className={className} w="calc(100vw - 200px)" px='lg'>{title}</Title>
                 <ColorSchemeToggle />
               </Flex>
             </Navbar.Section>
             <Navbar.Section grow pt='xl' mr='sm'>
               {navigation}
             </Navbar.Section>
+                {ripples}
           </Navbar>
         </MediaQuery>
         <MediaQuery largerThan="sm" styles={{ display: 'none' }}>
           <Header sx={!opened ? { background: 'transparent' } : {}} withBorder={false} height={{ base: 50, md: 70 }}>
-
             <div style={{ justifyContent: 'end', display: 'flex', alignItems: 'center', height: '100%' }}>
-
               <Group
                 pl="xl"
                 pr="xl"
                 h="100%"
                 sx={!opened ? (theme) => ({
-                  background: theme.colors[theme.primaryColor][theme.colorScheme == 'light' ? 1 : 7],
+                  background: theme.colors[theme.primaryColor][theme.colorScheme == 'light' ? 1 : 6],
                   borderBottomLeftRadius: theme.radius.xl,
                   transition: '1s'
                 }) : () => ({

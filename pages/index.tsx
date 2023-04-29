@@ -120,7 +120,7 @@ export default function HomePage() {
                     pr="xl"
                     h="100%"
                     sx={!opened ? (theme) => ({
-                      background: theme.colors[theme.primaryColor][theme.colorScheme == 'light' ? 1 : 7],
+                      background: theme.colors[theme.primaryColor][theme.colorScheme == 'light' ? 1 : 6],
                       borderBottomLeftRadius: theme.radius.xl,
                       transition: '1s'
                     }) : () => ({

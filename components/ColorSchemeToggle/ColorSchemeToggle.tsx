@@ -1,26 +1,17 @@
-import { ActionIcon, ColorScheme, Group, useMantineColorScheme } from '@mantine/core';
-import { useLocalStorage } from '@mantine/hooks';
-import { IconSun, IconMoonStars } from '@tabler/icons';
-
-
-
+import { Group, useMantineColorScheme, useMantineTheme } from '@mantine/core';
+import { DarkModeSwitch } from './ColorToggle';
 
 export function ColorSchemeToggle() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-
+  const { colors, primaryColor } = useMantineTheme()
   return (
-    <Group position="center">
-      <ActionIcon
-        onClick={() => toggleColorScheme()}
-        size="xl"
-        color='brand'
-      >
-        {colorScheme === 'dark' ? (
-          <IconSun size={20} stroke={1.5} />
-        ) : (
-          <IconMoonStars size={20} stroke={1.5} />
-        )}
-      </ActionIcon>
+    <Group position="center" p="sm">
+      <DarkModeSwitch 
+        checked={colorScheme == "dark"} onChange={() => toggleColorScheme()}
+        sunColor={colors[primaryColor][3]}
+        moonColor='#909090'
+        size={36}
+      />
     </Group>
   );
 }

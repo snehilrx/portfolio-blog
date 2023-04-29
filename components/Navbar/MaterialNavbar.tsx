@@ -105,8 +105,8 @@ function Menu({ navItems, scrollHooks, orientation }: MenuProps) {
         </RippleButton>
 
         <Link href={'/blog'}>
-        <RippleButton>Blog
-        </RippleButton></Link>
+            <RippleButton>Blog</RippleButton>
+        </Link>
 
         <ColorSchemeToggle />
     </>

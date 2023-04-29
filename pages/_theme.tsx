@@ -9,6 +9,13 @@ export default function Material3Theme({isMounted} : ThemeProps) {
         <Global
             styles={(theme) => {
                 return {
+                    [`a:link`] : { textDecoration: 'none' },
+                    [`a:visited`] : { textDecoration: 'none' },
+                    [`a:hover`] : { textDecoration: 'none' },
+                    [`a:active`] : { textDecoration: 'none' },
+                    'h1' : {
+                        color: theme.colors[theme.primaryColor][theme.colorScheme == 'light' ? 7 : 3],
+                    },
                     'body' : {
                         visibility: isMounted == false ? 'hidden' : 'unset'
                     },
@@ -33,6 +40,7 @@ export default function Material3Theme({isMounted} : ThemeProps) {
                         borderRadius: theme.radius.lg
                     },
                     '.mantine-SegmentedControl-root	': {
+                        alignItems: "flex-start",
                         background: 'transparent'
                     },
                     '.mantine-SegmentedControl-indicator': {
@@ -77,8 +85,7 @@ export default function Material3Theme({isMounted} : ThemeProps) {
                           opacity: 0,
                           visibility: 'hidden'
                         }
-                      }
-                      
+                      }                      
                 }
             }} />)
 }

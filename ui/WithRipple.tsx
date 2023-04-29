@@ -1,4 +1,4 @@
-import { Button, ButtonProps, ContainerProps, NavLink, useMantineTheme } from "@mantine/core";
+import { Button, ButtonProps, ContainerProps, MediaQuery, NavLink, useMantineTheme } from "@mantine/core";
 import React, { CSSProperties, PropsWithChildren, ReactElement, useRef } from "react";
 import useRipple from '../hooks/useRipple'
 
@@ -31,19 +31,21 @@ export function RippleButton<C = "button">(props: import("@mantine/utils").Polym
     })
     
     return (
-        <Button<any>
-            {...props}
-            color='brand'
-            style={{ position: 'relative', overflow: 'hidden' }}
-            onClick={(event: React.MouseEvent<HTMLElement>) => {
-                addRipple(event)
-                if (props.onClick) {
-                    props.onClick(event)
-                }
-            }}
-        >
-            {ripples}
-            {props.children}
-        </Button>
+        <MediaQuery smallerThan='md' styles={{width: 'inherit'}}>
+            <Button<any>
+                {...props}
+                color='brand'
+                style={{ position: 'relative', overflow: 'hidden',  }}
+                onClick={(event: React.MouseEvent<HTMLElement>) => {
+                    addRipple(event)
+                    if (props.onClick) {
+                        props.onClick(event)
+                    }
+                }}
+            >
+                {ripples}
+                {props.children}
+            </Button>
+        </MediaQuery>
     );
 };

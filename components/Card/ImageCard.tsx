@@ -1,5 +1,5 @@
 import { IconEye, IconMessageCircle } from '@tabler/icons-react';
-import { Card, Text, Group, Center, createStyles, getStylesRef, rem } from '@mantine/core';
+import { Card, Text, Group, Center, createStyles, getStylesRef, rem, Image } from '@mantine/core';
 import Link from 'next/link';
 import TimeAgo from 'react-timeago'
 import WithRipple from '../../ui/WithRipple';

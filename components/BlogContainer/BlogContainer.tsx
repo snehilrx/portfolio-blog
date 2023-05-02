@@ -21,7 +21,7 @@ const BlogContainer = ({ navigation, children, backLink, title, className }: Blo
     layout="alt"
     navbarOffsetBreakpoint="sm"
     navbar={opened == true ?
-      <Navbar width={{ sm: 300 }} top={40} sx={{ overflow: 'scroll' }}>
+      <Navbar width={{ sm: 300 }} top={40} sx={{ overflowY: 'auto' }}>
         <Navbar.Section top={40} grow mt='xl' mb='xl' mr='sm'>
           {navigation}
         </Navbar.Section>
@@ -29,7 +29,7 @@ const BlogContainer = ({ navigation, children, backLink, title, className }: Blo
     header={
       <div>
         <MediaQuery smallerThan="sm" styles={{ visibility: 'hidden' }}>
-          <Navbar width={{ sm: 280, md: 300, xl: 400 }} sx={{ overflow: 'scroll' }}>
+          <Navbar width={{ sm: 280, md: 300, xl: 400 }} sx={{ overflowY: 'auto' }}>
             <Navbar.Section>
               <Flex px='xl' my='xl' align='center' style={css} onClick={addRipple}>
                 <Link href={backLink}>

@@ -138,7 +138,7 @@ export const Data: AppData = {
         pretitle: 'Hi, I am',
         title: 'Snehil.',
         subtitle: '# Crafting code on mac that runs on mobile',
-        discription: <>I am a software engineer and Android developer with a strong track record of delivering innovative, high-quality mobile applications. Currently, I work at <Anchor href='https://gonuclei.com/'>Nuclei</Anchor>, a leading technology company that specializes in fintech solutions for banks.</>
+        discription: <>I am a software engineer and Android developer with a strong track record of delivering innovative, high-quality mobile applications. Currently, I work at <Anchor color="green" href='https://gonuclei.com/'>Nuclei</Anchor>, a leading technology company that specializes in fintech solutions for banks.</>
     },
     info: {
         email: 'snehil101@gmail.com',
@@ -191,6 +191,17 @@ export const Data: AppData = {
     },
     project: {
         projects: [
+            {
+                title: "Fetch",
+                tags: ["android", "kotlin", "room", "pagination", "chromecast", "coroutines", "exoplayer", "cloudflare", "retrofit2", "okhttp3", "compose", "glsl-shaders", "recycle", "android-notification", "remote-mediator", "material3", "media3"],
+                content: <>
+                    <p>Fetch is an open source Android client for KickassAnime, designed to provide a seamless and enjoyable anime watching experience on your mobile device. </p>
+                    <p>It offers a range of features including adaptive streaming, downloading anime, release notifications, skip options, offline mode, and a powerful search function.</p>
+                    <p></p></>,
+                cover: "https://user-images.githubusercontent.com/7668602/238730820-e1916e36-6eb3-4941-9136-0d1605286e92.png",
+                link: "https://github.com/snehilrx/Fetch",
+                demo: "https://github.com/snehilrx/Fetch/releases"
+            },
             {
                 title: "Shinebar",
                 tags: ["android", "glsl", "shaders", "collapsing toolbar", "ui"],

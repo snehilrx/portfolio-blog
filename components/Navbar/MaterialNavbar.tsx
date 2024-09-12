@@ -100,9 +100,9 @@ function Menu({ navItems, scrollHooks, orientation }: MenuProps) {
             onChange={(value) => scrollHooks?.get(value)?.scrollFunction()}
         />
 
-        <RippleButton>
-            Resume
-        </RippleButton>
+        <Link href={'/cv.pdf'}>
+            <RippleButton>Resume</RippleButton>
+        </Link>
 
         <Link href={'/blog'}>
             <RippleButton>Blog</RippleButton>
